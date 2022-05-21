@@ -18,7 +18,7 @@ Container images become containers at runtime and in the case of Docker containe
 
 Containers and virtual machines have similar resource isolation and allocation benefits, but function differently because containers virtualize the operating system instead of hardware. Containers are more portable and efficient.
 
-![Container-vs-vms](./containers.vs.vm.jpg)
+![Container-vs-vms](./container-vms.jpg)
 
 ## The famous Dockerfile
 
