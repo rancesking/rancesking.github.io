@@ -1,7 +1,7 @@
 ---
 title: Containers?? What's that?
 date: "2022-05-21T22:40:32.169Z"
-description: How this project has been made, walkthrough and opinions by Racosta.
+description: What is containers using Docker for a very good example by Racosta.
 ---
 
 Hey welcome back to my blog, this time we going to learn about containers, Docker and we going to reuse the Github Actions knowledge. 
