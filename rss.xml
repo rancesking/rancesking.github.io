@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog]]></title><description><![CDATA[A starter blog demonstrating what Gatsby can do and CI/CD power.]]></description><link>https://rancesking.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 21 May 2022 21:49:18 GMT</lastBuildDate><item><title><![CDATA[Containers?? What's that?]]></title><description><![CDATA[Hey welcome back to my blog, this time we going to learn about containers, Docker and we going to reuse the Github Actions knowledge.  What…]]></description><link>https://rancesking.github.io/Dockerize-CICD/</link><guid isPermaLink="false">https://rancesking.github.io/Dockerize-CICD/</guid><pubDate>Sat, 21 May 2022 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Hey welcome back to my blog, this time we going to learn about containers, Docker and we going to reuse the Github Actions knowledge. &lt;/p&gt;
+&lt;h2&gt;What is a container?&lt;/h2&gt;
+&lt;p&gt;A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.&lt;/p&gt;
+&lt;p&gt;Container images become containers at runtime and in the case of Docker containers – images become containers when they run on Docker Engine. Available for both Linux and Windows-based applications, containerized software will always run the same, regardless of the infrastructure. Containers isolate software from its environment and ensure that it works uniformly despite differences for instance between development and staging.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fc8617e7db19a1ffc2b0df5991e8d894/9050f/containers.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.69620253164557%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgADBP/EABYBAQEBAAAAAAAAAAAAAAAAAAABA//aAAwDAQACEAMQAAABfPm0UJp//8QAGhAAAgIDAAAAAAAAAAAAAAAAAAEDEhExQ//aAAgBAQABBQKSdsuy2Rb5n//EABoRAAICAwAAAAAAAAAAAAAAAAACAxEUIVH/2gAIAQMBAT8Bipm2Yi9P/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAECE//aAAgBAgEBPwGm1Jqf/8QAGRAAAgMBAAAAAAAAAAAAAAAAACEBEDFx/9oACAEBAAY/AlnBmk3/AP/EABsQAQACAgMAAAAAAAAAAAAAAAEAERAhQVFh/9oACAEBAAE/IeCdrjSi9JcXplgsn//aAAwDAQACAAMAAAAQa9//xAAaEQACAgMAAAAAAAAAAAAAAAAAAREhYeHx/9oACAEDAQE/EEagozY+TZ//xAAZEQEAAgMAAAAAAAAAAAAAAAABABEhkfD/2gAIAQIBAT8QFt6xL8s//8QAGxABAQEAAwEBAAAAAAAAAAAAAREAMUFRIfD/2gAIAQEAAT8QipYoC7wCR4+nWBJUWMwOP3AT+9wApd//2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Containers&quot;
+        title=&quot;Containers&quot;
+        src=&quot;/static/fc8617e7db19a1ffc2b0df5991e8d894/828fb/containers.jpg&quot;
+        srcset=&quot;/static/fc8617e7db19a1ffc2b0df5991e8d894/ff44c/containers.jpg 158w,
+/static/fc8617e7db19a1ffc2b0df5991e8d894/a6688/containers.jpg 315w,
+/static/fc8617e7db19a1ffc2b0df5991e8d894/828fb/containers.jpg 630w,
+/static/fc8617e7db19a1ffc2b0df5991e8d894/9050f/containers.jpg 686w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Diferences between Containers and VMs&lt;/h2&gt;
+&lt;p&gt;Containers and virtual machines have similar resource isolation and allocation benefits, but function differently because containers virtualize the operating system instead of hardware. Containers are more portable and efficient.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/22a6b49bdf6d2770765a682697bfdc31/faddd/container-vms.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 50.632911392405056%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIDBf/EABQBAQAAAAAAAAAAAAAAAAAAAAL/2gAMAwEAAhADEAAAAdOsnQqIFf/EABgQAQEBAQEAAAAAAAAAAAAAAAECAwAS/9oACAEBAAEFAr0ZqqJ6a9GkjWgPZgT/AP/EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAEDAQE/Aaf/xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAgEBPwGH/8QAGBABAQEBAQAAAAAAAAAAAAAAAQARIRD/2gAIAQEABj8CTY8eEaXL/8QAGhABAAIDAQAAAAAAAAAAAAAAAQBBESFhcf/aAAgBAQABPyGojnJtVkLIRKWfJpI4LJiADdT/2gAMAwEAAgADAAAAECTv/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAwEBPxAXdh0v/8QAFxEBAQEBAAAAAAAAAAAAAAAAEQEAIf/aAAgBAgEBPxCqQwc3/8QAGxABAQEAAwEBAAAAAAAAAAAAAREAITFRQfD/2gAIAQEAAT8QMQAdfj7okI2oZ3zAznJSAVQvW865BnWVBaYJ5v/Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Container-vs-vms&quot;
+        title=&quot;Container-vs-vms&quot;
+        src=&quot;/static/22a6b49bdf6d2770765a682697bfdc31/828fb/container-vms.jpg&quot;
+        srcset=&quot;/static/22a6b49bdf6d2770765a682697bfdc31/ff44c/container-vms.jpg 158w,
+/static/22a6b49bdf6d2770765a682697bfdc31/a6688/container-vms.jpg 315w,
+/static/22a6b49bdf6d2770765a682697bfdc31/828fb/container-vms.jpg 630w,
+/static/22a6b49bdf6d2770765a682697bfdc31/faddd/container-vms.jpg 850w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;The famous Dockerfile&lt;/h2&gt;
+&lt;p&gt;Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession. This file is formated in YAML.&lt;/p&gt;
+&lt;p&gt;The advantage of a Dockerfile over just storing the binary image (or a snapshot/template in other virtualization systems) is that the automatic builds will ensure you have the latest version available. This is a good thing from a security perspective, as you want to ensure you’re not installing any vulnerable software.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3932d4ea4b2d3605fba3fc91ec741574/2cefc/dockerfile.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 33.54430379746836%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAIAAACHqfpvAAAACXBIWXMAAAsTAAALEwEAmpwYAAABA0lEQVQY03WQu07DMBSG/Tq8BQ/ABiOvxdgBBANMqCuKyli1Q4tUUJBIUhXihJbYaS6Ob8fBTdOitOIsvv3ff3x+VHfLGFP/X9C8wk6D7C5Ys3dS4oI3cMfl2Au0qg20MNcw+8lnUfLgYq5NWRSMMQDwv+l4vnzDlFVcSZnlhbXqu4szx7uaBFseWWfHiy7vBzdTX4DJs4ymqe3ouJ+nvae7ybyquBBilZBa8YvHIeqNTq6flZIbWBkzxGQa03FMS6X3fw7J+hUnIcmFkPs5BwE+749uXz42GgvbhQkZLVdpyQ6mjcOvbYe/S4DQ92TVKtEuH2i8OrFrDQd52bOQSkEb2C8RroyLNYGnhAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Dockerfile&quot;
+        title=&quot;Dockerfile&quot;
+        src=&quot;/static/3932d4ea4b2d3605fba3fc91ec741574/f058b/dockerfile.png&quot;
+        srcset=&quot;/static/3932d4ea4b2d3605fba3fc91ec741574/c26ae/dockerfile.png 158w,
+/static/3932d4ea4b2d3605fba3fc91ec741574/6bdcf/dockerfile.png 315w,
+/static/3932d4ea4b2d3605fba3fc91ec741574/f058b/dockerfile.png 630w,
+/static/3932d4ea4b2d3605fba3fc91ec741574/40601/dockerfile.png 945w,
+/static/3932d4ea4b2d3605fba3fc91ec741574/78612/dockerfile.png 1260w,
+/static/3932d4ea4b2d3605fba3fc91ec741574/2cefc/dockerfile.png 1400w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;Docker Hub&lt;/h2&gt;
+&lt;p&gt;Docker Hub is a service provided by Docker for finding and sharing container images with your team. It is the world’s largest repository of container images with an array of content sources including container community developers, open source projects and independent software vendors (ISV) building and distributing their code in containers.&lt;/p&gt;
+&lt;p&gt;Users get access to free public repositories for storing and sharing images or can choose a subscription plan for private repositories.&lt;/p&gt;
+&lt;p&gt;The best part of Dockerhub is that you can deploy your Docker images from Docker Hub very easy only calling the Image from the repo at the moment of deploy a container.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 348px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/129df277f1cc3c379b951c929c360b3e/34ea4/dockerhub.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41.77215189873418%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVQY05VRTUvDQBTMH1PRpGnVIhJFqaJVUZR68CDob/CqWDdNU9tabaMlBD/OPShI22vx5E12N5sEbNSKp8bXrJXeRBgew76dfTtvBDlDAFGNcPIvCNEMiah49ARH4IkQcr/+LRYRHtfI3q2XMt3hNBYRGUMYIKkEWhIiABGFXIUxRA4r8J44rtN802+8fBWb71ars3vtLZfZ+qUzkSUL5/bGlTOpU6VgzxXtRMmeylFQKgU6U6DwU2HbdIMg6HahBDdPnTWDZet+rvF2eN8+qL3qdR89+lbrY//OS5ZZynS2qgB3x3KnT6kA0+Fe7fnz6KHNnawYzuIFWyqzVYPNn9nJCtusOjGtt9R4jiZKTMnT2aINZgWYDlZH0njoGHMxGBZD27BFSf0hvAWXwb/065nnBIj10+Kx8UNZCyMYCDI6EMo3Hb4tgagANOIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Dockerhub&quot;
+        title=&quot;Dockerhub&quot;
+        src=&quot;/static/129df277f1cc3c379b951c929c360b3e/34ea4/dockerhub.png&quot;
+        srcset=&quot;/static/129df277f1cc3c379b951c929c360b3e/c26ae/dockerhub.png 158w,
+/static/129df277f1cc3c379b951c929c360b3e/6bdcf/dockerhub.png 315w,
+/static/129df277f1cc3c379b951c929c360b3e/34ea4/dockerhub.png 348w&quot;
+        sizes=&quot;(max-width: 348px) 100vw, 348px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;The process&lt;/h2&gt;
+&lt;p&gt;In this challenge i need to deploy a Frontend running in Nginx using a Dockerfile and create a pipeline for post the Docker image to DockerHub.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1st step:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create the repository in Github  &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2nd step:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Build the docker file&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;FROM&lt;/span&gt; nginx&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;alpine
+&lt;span class=&quot;token constant&quot;&gt;LABEL&lt;/span&gt; maintainer&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;xKingrd&quot;&lt;/span&gt;
+&lt;span class=&quot;token constant&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;images &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;share&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;nginx&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;html&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;images
+&lt;span class=&quot;token constant&quot;&gt;ADD&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;css &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;share&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;nginx&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;html&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;css
+&lt;span class=&quot;token constant&quot;&gt;COPY&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;index&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;html &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;usr&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;share&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;nginx&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;html&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;
+&lt;span class=&quot;token constant&quot;&gt;EXPOSE&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;80&lt;/span&gt;
+&lt;span class=&quot;token constant&quot;&gt;EXPOSE&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;443&lt;/span&gt;
+&lt;span class=&quot;token constant&quot;&gt;ENTRYPOINT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;nginx&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;-g&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;daemon off;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The images, css and all the files are on my github repo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3rd step:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create the CI Pipeline&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ci
+
+on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  push&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    branches&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;main&apos;&lt;/span&gt;
+
+
+jobs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  docker&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    runs&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;latest
+    steps&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Checkout
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; actions&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;checkout@v2
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Set up &lt;span class=&quot;token constant&quot;&gt;QEMU&lt;/span&gt;
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; docker&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;setup&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;qemu&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;action@v2
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Set up Docker Buildx
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; docker&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;setup&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;buildx&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;action@v2
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; What
+        run&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; echo &lt;span class=&quot;token string&quot;&gt;&quot;ATTEMPT=${GITHUB_RUN_NUMBER}&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; $&lt;span class=&quot;token constant&quot;&gt;GITHUB_ENV&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Login to DockerHub
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; docker&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;login&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;action@v2
+        &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+          username&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;DOCKERHUB_USERNAME&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          password&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;DOCKERHUB_TOKEN&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;
+        name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Build and push
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; docker&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;build&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;push&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;action@v3
+        &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+          context&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+          push&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+          tags&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; xkingrd&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;littlelink&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;v$&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; env&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;ATTEMPT&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The username and password are storage in the repo secrets in Github, the ATTEMPT variable generate the version number for the image at the moment of the build and upload process.&lt;/p&gt;
+&lt;h2&gt;My Opinion&lt;/h2&gt;
+&lt;p&gt;This challenge was more easy in my opinion, Github Actions keeps been useful very easy to use. In this project i found a Docker oficial Actions on Github Actions using this oficial action i feel more save about my data.&lt;/p&gt;
+&lt;p&gt;Dockerhub works very good and with the versioning of the images, helps to keep a very clean and trasable view of the image history.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[How easy is CI/CD with Github Actions]]></title><description><![CDATA[Hello welcome to my blog, in this oportunity i’m going to talk you about Continuous integration and continuos deployment. First of all we…]]></description><link>https://rancesking.github.io/CICD/</link><guid isPermaLink="false">https://rancesking.github.io/CICD/</guid><pubDate>Mon, 16 May 2022 22:40:32 GMT</pubDate><content:encoded>&lt;p&gt;Hello welcome to my blog, in this oportunity i’m going to talk you about Continuous integration and continuos deployment. First of all we need to know, what is CI/CD? &lt;/p&gt;
+&lt;p&gt;Continuous integration (CI) and continuous deployment (CD), also known as CI/CD, embodies a culture, operating principles, and a set of practices that application development teams use to deliver code changes more frequently and reliably.&lt;/p&gt;
+&lt;p&gt;CI/CD is one of the bestest practice for devops teams. It is also a best practice in agile methodology. By automating integration and delivery, CI/CD lets software development teams focus on meeting business requirements while ensuring code quality and software security.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 612px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b7a02862689b0113e56897a372bad912/8c76f/CICD_CICD.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 47.46835443037975%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAACu0lEQVQozzWSa0gTUBTHzzKCSAj7YEIUJopZH7IHVESaYO3DRBNEeiDlCgXRNUSNKQy0RMthNjWnrlJxbW4pbm4+tpnadNPN+W7TbTbyMZfTpubUOe20TTpwz+HA+f/+l3sPLKxPwKilBQy/5YCIcJ8HMLbCvdg2Q0uRmqqfdM5jkH+NHVASAUP8lVANW0nW1A49m+01nW9OafJqPGd7Yxucm07wNqbVAW/1BG+SwiyWkbBCdRPJYg6GVer/Jois6ain5wwzOdhI5mLd048opLagmq0qvARBXt1/sDfVDCf61I8lQ6+5Iq98MAZL+2LnZKZsWpZsvPgkY2SHyhUjdkXg4peC9Y4ibYG8tJ3eTmtblud34RBLmdZFk0BXrsTHC+wxlxOcu9sesO+HkQeLDePJzrU944VGNRGCa2eANor3dJJMRNHtPafxU3Rnbj7UUYVg/7F2oymDh8Kclim39rAHNt2hAxB8zyQoLGWgXWWfKe2NwyrlQ2VC9VW4FXP9HBzzO+EePPKLH2ezCeLMHpHv6SuhgZdJocf9SNBEaZzmUXnb+zqHv63fAirWAAGkphLCJprcN3T4vfsWv8pQkOwWxADEt4D6VNg31Ec6BFGoE2dtMZcwPG0TIcmG0IcYwi+UuaQ04azb6KjHbEo4SYCt3TXI7T51iNITAJ91lDKuOgHX+ylqHMyJ358oIzvl5AUUR2I6rx2Da2eNJarFRxnS+cRwlnbqGmsc2RIT/XmlFh4zNQdvuLFjBZtVQdC4G53byaHOE7la7+Ayj4gu0V10fSUjql8wiM1L70OqJjCKY8BAxgCeLVEgkW/kuCFeUOHczsEv65dlYLB2gnmhlWB3mL0rsDvKiHV0p7/ZU1Be7Rm4ERsNYQBJY1DYb4lO7fhZFCswFdOVK0SAl/DaDSkybBGy9X/APm+Hf190t+uaZ4CCAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;devops Cicle&quot;
+        title=&quot;devops Cicle&quot;
+        src=&quot;/static/b7a02862689b0113e56897a372bad912/8c76f/CICD_CICD.png&quot;
+        srcset=&quot;/static/b7a02862689b0113e56897a372bad912/c26ae/CICD_CICD.png 158w,
+/static/b7a02862689b0113e56897a372bad912/6bdcf/CICD_CICD.png 315w,
+/static/b7a02862689b0113e56897a372bad912/8c76f/CICD_CICD.png 612w&quot;
+        sizes=&quot;(max-width: 612px) 100vw, 612px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;GitHub Pages&lt;/h2&gt;
+&lt;p&gt;GitHub Pages are public webpages hosted and published through GitHub. The quickest way to get up and running is by using the Jekyll Theme Chooser to load a pre-made theme. You can then modify your GitHub Pages’ content and style.&lt;/p&gt;
+&lt;p&gt;This guide will lead you through creating a user site at username.github.io.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b595ccbb44690af4958adc678e984e18/078fe/pages.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 46.835443037974684%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB/klEQVQoz4XS3U+SYRjHcf4S10lrzdZmabU66rCD5kkHhZHVmC5ibKi8PjxoPBgvvkAgI2Cl9nIAG6P7upBAWzPtH6jVmmIoiQJpG8hTD9jL080a5SzWP/DZ975+t+S5cgVSqgyieg1i/VmMaNbxkX4Dp5g8BEx5DForZMotRgMeMWpz8DDoKCMzyoN2/DOq7wio9Naw1/cVrvm/4+XgDyKhIFIQKIgN8LF+A+4bcjhtqTxhFS+ftbV2Zk52dC+x5myCGxWIcWQHKQh7QKQgUBAl/yzU5fABuwWugXeJo4fOZc+eVrztONaVPt4uW+bGqhSsYJNCaBTi3sKH2g8Y4YSYWhpeOHjgzGY0JIbHbTxpaTlRGDClk2ZXjWjGeNxXiI3Cv8B64TRTBL8xF287fH61RxZePNV+Zbn1SOeq0yvGDM7y/sL/gHSUSeMm3hvcBo08Ma+Sx1/IuyOLBiadrN+Q+fVkULsFvOmpYo9vl4LfsPkN9bTQVIQJXWam/zpZ6OtNzjOaV7Na/ZvZod8r89jn2QWVXyQ37opEHhKJLCRC05UnjXkMsR8hYCkRr7VMRoZLcNtWhiHHDtQLdS4BlM7tmavc+5TMnnt60b6elPprcUmzf0hBCLIFnDAX0X1rC53WTzhsK+EfsAoKeyHRZXo9J+VWUhcsS3OXfF/gJ+rE0qR6d4BXAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gh-pages&quot;
+        title=&quot;gh-pages&quot;
+        src=&quot;/static/b595ccbb44690af4958adc678e984e18/f058b/pages.png&quot;
+        srcset=&quot;/static/b595ccbb44690af4958adc678e984e18/c26ae/pages.png 158w,
+/static/b595ccbb44690af4958adc678e984e18/6bdcf/pages.png 315w,
+/static/b595ccbb44690af4958adc678e984e18/f058b/pages.png 630w,
+/static/b595ccbb44690af4958adc678e984e18/078fe/pages.png 934w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;GitHub Actions&lt;/h2&gt;
+&lt;p&gt;Automate your workflow from idea to production&lt;/p&gt;
+&lt;p&gt;GitHub Actions makes it easy to automate all your software workflows, now with world-class CI/CD. Build, test, and deploy your code right from GitHub. Make code reviews, branch management, and issue triaging work the way you want.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/93df7f6ab6f4c7d07b2c8e08e618423f/b88bf/githubactions.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 27.21518987341772%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVQY05VQ0QrCMAzs//+SP+FrUacO59oqKritTcdyq5Vi51Tw4EhyCVwSgQBmjnyBJzH1PzH1E0QuSsNo6FkPE4Pv4Lc5kTstK8ZCDrA9oJRGVWusNlvIdYHL9YZ9eUCtDI5BL3YltDnNN8wF6hnnlsN2gCOCdQ4u8N608N7HmoLedTbykf88ef7D/08eARB6iRnvbgWiAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gh-actions&quot;
+        title=&quot;gh-actions&quot;
+        src=&quot;/static/93df7f6ab6f4c7d07b2c8e08e618423f/f058b/githubactions.png&quot;
+        srcset=&quot;/static/93df7f6ab6f4c7d07b2c8e08e618423f/c26ae/githubactions.png 158w,
+/static/93df7f6ab6f4c7d07b2c8e08e618423f/6bdcf/githubactions.png 315w,
+/static/93df7f6ab6f4c7d07b2c8e08e618423f/f058b/githubactions.png 630w,
+/static/93df7f6ab6f4c7d07b2c8e08e618423f/40601/githubactions.png 945w,
+/static/93df7f6ab6f4c7d07b2c8e08e618423f/78612/githubactions.png 1260w,
+/static/93df7f6ab6f4c7d07b2c8e08e618423f/b88bf/githubactions.png 1702w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2&gt;The process&lt;/h2&gt;
+&lt;p&gt;In this challenge i need to make a GitHub Pages using CI/CD. Applying automatization from the pull request to the deploy all runing the gitflow.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1st step
+Make a GitHub Pages with your free github account using the guide posted on &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2nd step
+Push your code to the repository that host the GitHub Pages&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3rd step
+Create your branches. In my case i make 3 branches (Main, Develop and gh-pages) all the branches have a purpose that i will explain now. &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The 1st branch is Develop: In develop all the changes and feature develop is made here. &lt;/p&gt;
+&lt;p&gt;This branch is the more unestable of the project, when the code is stable this code is pushed to main with a CI GitHub Action that is trigged when a pull request is made to merge the Develop and Main branch.&lt;/p&gt;
+&lt;p&gt;The 2nd branch is Main: In Main all the tested code is alocated is like the delivery version of the code ready for deploy. &lt;/p&gt;
+&lt;p&gt;This branch is the more stable of all the project, here the code is ready for deploy this code is tested and review, when the pull request is acepted and the code is merge from develop to main this trigged another GitHub Action that deploy the code to the gh-pages branch that is published on the web. &lt;/p&gt;
+&lt;p&gt;The 3rd branch is Gh-pages: This branch is the deployed version of the code running on the GitHub Pages.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;3rd step
+Create your CI/CD pipeline with GitHub Actions, First i create the CI action.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt; This is a basic workflow to help you &lt;span class=&quot;token keyword&quot;&gt;get&lt;/span&gt; started &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt; Actions
+
+name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;CI&lt;/span&gt;
+
+# Controls when the workflow will run
+on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  #push&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    #branches&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; main&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  # Triggers the workflow on push or pull request events but only &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; the main branch
+  pull_request&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    branches&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; main &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+
+  # Allows you to run &lt;span class=&quot;token keyword&quot;&gt;this&lt;/span&gt; workflow manually &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; the Actions tab
+  workflow_dispatch&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+
+# &lt;span class=&quot;token constant&quot;&gt;A&lt;/span&gt; workflow run is made up &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; one or more jobs that can run sequentially or &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; parallel
+jobs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  # This workflow contains a single job called &lt;span class=&quot;token string&quot;&gt;&quot;build&quot;&lt;/span&gt;
+  Test_CI&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    # The type &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; runner that the job will run on
+    runs&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;latest
+    
+    # Steps represent a sequence &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; tasks that will be executed &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; part &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; the job
+    steps&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      # Checks&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;out your repository under $&lt;span class=&quot;token constant&quot;&gt;GITHUB_WORKSPACE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; so your job can access it
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; actions&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;checkout@v3
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Setup Node&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;js environment
+        uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; actions&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;setup&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;node@v3&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1.1&lt;/span&gt;
+        &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+          # Version Spec &lt;span class=&quot;token keyword&quot;&gt;of&lt;/span&gt; the version to use&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;  Examples&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;12.&lt;/span&gt;x&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10.15&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;.1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10.15&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;.0&lt;/span&gt;
+          node&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;version&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;  &lt;span class=&quot;token number&quot;&gt;12.&lt;/span&gt;x
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; run&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; npm ci
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; run&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; npm test 
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; run&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; npm run build &lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;present&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Second i create the CD action.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;CD&lt;/span&gt;
+
+on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  push&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    branches&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; main
+
+jobs&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  build&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    runs&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;on&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; ubuntu&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;latest
+    steps&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; actions&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;checkout@v2
+      &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; uses&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; enriikke&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;gatsby&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;gh&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;pages&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;action@v2
+        &lt;span class=&quot;token keyword&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+          access&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;token&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; $&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; secrets&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;ACCESS_TOKEN&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+          deploy&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;branch&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; gh&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;pages&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;My Opinion&lt;/h2&gt;
+&lt;p&gt;This was a very tough challenge, i learn the magic behind CI/CD. GitHub Pages are public webpages hosted and publish through GitHub and the best of all are that this webpage is free easy to use very user friendly. GitHub Actions make easy to automate software workflows automating tests, integrations and deploys. &lt;/p&gt;
+&lt;p&gt;In my project i use Gatsby blogs, this react-based framework for creating websites and apps in this project i make a mearly blog. Very easy to redact and keep updated, all the software workflow is automated from the push to the deploy with the GitHub Actions.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[2nd Blog.]]></title><description><![CDATA[Wow! testing new features. Did you know that “despite its name, salted duck eggs can also be made from
+chicken eggs, though the taste and…]]></description><link>https://rancesking.github.io/my-second-post/</link><guid isPermaLink="false">https://rancesking.github.io/my-second-post/</guid><pubDate>Sun, 15 May 2022 23:46:37 GMT</pubDate><content:encoded>&lt;p&gt;Wow! testing new features.&lt;/p&gt;
+&lt;p&gt;Did you know that “despite its name, salted duck eggs can also be made from
+chicken eggs, though the taste and texture will be somewhat different, and the
+egg yolk will be less rich.”?
+(&lt;a href=&quot;https://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;Wikipedia Link&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Yeah, I didn’t either.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[1st blog]]></title><description><![CDATA[This is my first post on my new fake blog! How exciting! I’m sure I’ll write a lot more interesting things in the future. Oh, and here’s a…]]></description><link>https://rancesking.github.io/hello-world/</link><guid isPermaLink="false">https://rancesking.github.io/hello-world/</guid><pubDate>Sat, 14 May 2022 22:12:03 GMT</pubDate><content:encoded>&lt;p&gt;This is my first post on my new fake blog! How exciting!&lt;/p&gt;
+&lt;p&gt;I’m sure I’ll write a lot more interesting things in the future.&lt;/p&gt;
+&lt;p&gt;Oh, and here’s a great quote from this Wikipedia on
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Salted_duck_egg&quot;&gt;salted duck eggs&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A salted duck egg is a Chinese preserved food product made by soaking duck
+eggs in brine, or packing each egg in damp, salted charcoal. In Asian
+supermarkets, these eggs are sometimes sold covered in a thick layer of salted
+charcoal paste. The eggs may also be sold with the salted paste removed,
+wrapped in plastic, and vacuum packed. From the salt curing process, the
+salted duck eggs have a briny aroma, a gelatin-like egg white and a
+firm-textured, round yolk that is bright orange-red in color.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8058f3f26913fea3b6a89a73344fe94a/e1596/salty_egg.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.31645569620254%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMB/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEEBf/aAAwDAQACEAMQAAABgik0dWC//8QAGRABAAMBAQAAAAAAAAAAAAAAAQACERJC/9oACAEBAAEFAkqW7B5Zovtvk//EABcRAQADAAAAAAAAAAAAAAAAAAAREkH/2gAIAQMBAT8B1WX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAESL/2gAIAQIBAT8BjT//xAAbEAABBAMAAAAAAAAAAAAAAAAAAQIRISIxMv/aAAgBAQAGPwK9GNocyS8hCj//xAAaEAADAQEBAQAAAAAAAAAAAAAAAREhQYGx/9oACAEBAAE/IXOrA43oOyg9wgU86OZMfwZKypT/2gAMAwEAAgADAAAAEMjv/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQARIf/aAAgBAwEBPxARwyusv//EABcRAQEBAQAAAAAAAAAAAAAAAAEAIVH/2gAIAQIBAT8QOoVoX//EAB0QAQEAAgIDAQAAAAAAAAAAAAERADFhgSFB0eH/2gAIAQEAAT8QSpwaGjrBSrtHyF9iY8RpUnGRBGqtOcsiDE6fM3AgiXf5M//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Chinese Salty Egg&quot;
+        title=&quot;Chinese Salty Egg&quot;
+        src=&quot;/static/8058f3f26913fea3b6a89a73344fe94a/828fb/salty_egg.jpg&quot;
+        srcset=&quot;/static/8058f3f26913fea3b6a89a73344fe94a/ff44c/salty_egg.jpg 158w,
+/static/8058f3f26913fea3b6a89a73344fe94a/a6688/salty_egg.jpg 315w,
+/static/8058f3f26913fea3b6a89a73344fe94a/828fb/salty_egg.jpg 630w,
+/static/8058f3f26913fea3b6a89a73344fe94a/0ede0/salty_egg.jpg 945w,
+/static/8058f3f26913fea3b6a89a73344fe94a/3ac88/salty_egg.jpg 1260w,
+/static/8058f3f26913fea3b6a89a73344fe94a/e1596/salty_egg.jpg 2048w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;You can also write code blocks here!&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; saltyDuckEgg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;chinese preserved food product&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;left&quot;&gt;Number&lt;/th&gt;
+&lt;th align=&quot;left&quot;&gt;Title&lt;/th&gt;
+&lt;th align=&quot;right&quot;&gt;Year&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;1&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Harry Potter and the Philosopher’s Stone&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2001&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;2&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Harry Potter and the Chamber of Secrets&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2002&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;left&quot;&gt;3&lt;/td&gt;
+&lt;td align=&quot;left&quot;&gt;Harry Potter and the Prisoner of Azkaban&lt;/td&gt;
+&lt;td align=&quot;right&quot;&gt;2004&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;a href=&quot;https://raw.github.com/adamschwartz/github-markdown-kitchen-sink/master/README.md&quot;&gt;View raw (TEST.md)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This is a paragraph.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Header 1&lt;/h1&gt;
+&lt;h2&gt;Header 2&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Header 1
+========
+
+Header 2
+--------&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Header 1&lt;/h1&gt;
+&lt;h2&gt;Header 2&lt;/h2&gt;
+&lt;h3&gt;Header 3&lt;/h3&gt;
+&lt;h4&gt;Header 4&lt;/h4&gt;
+&lt;h5&gt;Header 5&lt;/h5&gt;
+&lt;h6&gt;Header 6&lt;/h6&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# Header 1
+## Header 2
+### Header 3
+#### Header 4
+##### Header 5
+###### Header 6&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;Header 1&lt;/h1&gt;
+&lt;h2&gt;Header 2&lt;/h2&gt;
+&lt;h3&gt;Header 3&lt;/h3&gt;
+&lt;h4&gt;Header 4&lt;/h4&gt;
+&lt;h5&gt;Header 5&lt;/h5&gt;
+&lt;h6&gt;Header 6&lt;/h6&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# Header 1 #
+## Header 2 ##
+### Header 3 ###
+#### Header 4 ####
+##### Header 5 #####
+###### Header 6 ######&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;gt; Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;h2&gt;This is a header.&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;This is the first list item.&lt;/li&gt;
+&lt;li&gt;This is the second list item.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here’s some example code:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Markdown.generate();&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;gt; ## This is a header.
+&amp;gt; 1. This is the first list item.
+&amp;gt; 2. This is the second list item.
+&amp;gt;
+&amp;gt; Here&amp;#39;s some example code:
+&amp;gt;
+&amp;gt;     Markdown.generate();&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;li&gt;Red&lt;/li&gt;
+&lt;li&gt;Green&lt;/li&gt;
+&lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Red
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Green
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Blue
+
+&lt;span class=&quot;token list punctuation&quot;&gt;*&lt;/span&gt; Red
+&lt;span class=&quot;token list punctuation&quot;&gt;*&lt;/span&gt; Green
+&lt;span class=&quot;token list punctuation&quot;&gt;*&lt;/span&gt; Blue
+
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Red
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Green
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; Blue&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;code goes&lt;/code&gt; here in this line&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bold&lt;/strong&gt; goes here&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;- &lt;span class=&quot;token code keyword&quot;&gt;`code goes`&lt;/span&gt; here in this line
+&lt;span class=&quot;token list punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt; goes here&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Buy flour and salt&lt;/li&gt;
+&lt;li&gt;Mix together with water&lt;/li&gt;
+&lt;li&gt;Bake&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; Buy flour and salt
+&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; Mix together with water
+&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; Bake&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;code goes&lt;/code&gt; here in this line&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bold&lt;/strong&gt; goes here&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;markdown&quot;&gt;&lt;pre class=&quot;language-markdown&quot;&gt;&lt;code class=&quot;language-markdown&quot;&gt;1. &lt;span class=&quot;token code keyword&quot;&gt;`code goes`&lt;/span&gt; here in this line
+&lt;span class=&quot;token list punctuation&quot;&gt;1.&lt;/span&gt; &lt;span class=&quot;token bold&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;token content&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;**&lt;/span&gt;&lt;/span&gt; goes here&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Paragraph:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Code&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;!-- --&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Paragraph:
+
+    Code&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is &lt;a href=&quot;http://example.com&quot; title=&quot;Example&quot;&gt;an example&lt;/a&gt; link.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://example.com&quot;&gt;This link&lt;/a&gt; has no title attr.&lt;/p&gt;
+&lt;p&gt;This is &lt;a href=&quot;http://example.com&quot; title=&quot;Optional Title&quot;&gt;an example&lt;/a&gt; reference-style link.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This is [an example](http://example.com &amp;quot;Example&amp;quot;) link.
+
+[This link](http://example.com) has no title attr.
+
+This is [an example] [id] reference-style link.
+
+[id]: http://example.com &amp;quot;Optional Title&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;single asterisks&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;single underscores&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double asterisks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;double underscores&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This paragraph has some &lt;code class=&quot;language-text&quot;&gt;code&lt;/code&gt; in it.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This paragraph has some `code` in it.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/200x50&quot; alt=&quot;Alt Text&quot; title=&quot;Image Title&quot;&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;![Alt Text](https://placehold.it/200x50 &amp;quot;Image Title&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item></channel></rss>
