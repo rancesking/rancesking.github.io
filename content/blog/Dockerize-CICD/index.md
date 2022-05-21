@@ -26,7 +26,7 @@ Docker can build images automatically by reading the instructions from a Dockerf
 
 The advantage of a Dockerfile over just storing the binary image (or a snapshot/template in other virtualization systems) is that the automatic builds will ensure you have the latest version available. This is a good thing from a security perspective, as you want to ensure you’re not installing any vulnerable software.
 
-![Dockerfile](./dockerhub.png)
+![Dockerfile](./dockerfile.png)
 
 ## Docker Hub
 
@@ -36,7 +36,7 @@ Users get access to free public repositories for storing and sharing images or c
 
 The best part of Dockerhub is that you can deploy your Docker images from Docker Hub very easy only calling the Image from the repo at the moment of deploy a container.
 
-![Dockerhub](./dockerfile.png)
+![Dockerhub](./dockerhub.png)
 
 ## The process
 
